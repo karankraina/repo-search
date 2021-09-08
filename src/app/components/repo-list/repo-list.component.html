@@ -1,1 +1,27 @@
-<p>repo-list works!</p>
+<section>
+    <h3>GitHub API Results</h3>
+    <input type="text" (keyup)= "filterRepoName($event)" *ngIf="repositories.length">
+    <table *ngIf="filteredRepositories.length; else noData">
+        <thead>
+            <td>Owner</td>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Stars</td>
+            <td>Open Issues</td>
+            <td>Watchers</td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let repo of filteredRepositories">
+                <td>{{repo.owner.login}}</td>
+                <td>{{repo.name}}</td>
+                <td>{{repo.description}}</td>
+                <td>{{repo.stargazers_count}}</td>
+                <td>{{repo.open_issues_count}}</td>
+                <td>{{repo.watchers_count}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #noData>
+        <p><em>No data found</em></p>
+    </ng-template>
+</section>
