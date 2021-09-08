@@ -1,0 +1,37 @@
+<header>
+  <nav>
+    <h2>GitHub Repo Search</h2>
+  </nav>
+</header>
+
+<main>
+  <input type="text" placeholder="GitHub Username" [(ngModel)]="username">
+  <button (click)="handleClick()">Find Repositories</button>
+
+  <p *ngIf="errorMessage">{{errorMessage}}</p>
+
+  <!-- Table -->
+  <section *ngIf="repositories.length && !errorMessage">
+    <table>
+      <thead>
+        <td>Owner</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Stars</td>
+        <td>Open Issues</td>
+        <td>Watchers</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repo of repositories">
+          <td>{{repo.owner.login}}</td>
+          <td>{{repo.name}}</td>
+          <td>{{repo.description}}</td>
+          <td>{{repo.stargazers_count}}</td>
+          <td>{{repo.open_issues_count}}</td>
+          <td>{{repo.watchers_count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
