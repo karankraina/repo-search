@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
 
+import { sortArray, filterArray } from 'src/app/utils/array.utils';
+
 @Component({
   selector: 'app-repo-list',
   templateUrl: './repo-list.component.html',
@@ -10,7 +12,8 @@ export class RepoListComponent implements OnInit, OnChanges {
   @Input() repositories: any[] = [];
   filteredRepositories: any[];
 
-  isReverseSort: boolean = false;
+  isReverseSort: boolean = true;
+  sortedColumn: string = 'name';
 
   columns: { label: string, key: string }[] = [
     {
@@ -52,26 +55,13 @@ export class RepoListComponent implements OnInit, OnChanges {
 
   filterRepoName(event) {
     const filterKeyword = event.target.value;
-    if (filterKeyword === '') {
-      this.filteredRepositories = this.repositories;
-      return;
-    }
-    this.filteredRepositories = this.repositories.filter(repo => {
-      const repoName = repo.name;
-
-      return repoName.toLowerCase().indexOf(filterKeyword.toLowerCase()) > -1;
-    });
+    this.filteredRepositories = filterArray(this.repositories, 'name', filterKeyword);
+    
   }
 
   sort(propName, isReverse) {
-    if (isReverse == true) {
-      this.filteredRepositories.sort((a, b) => `${a[propName]}`.toLowerCase() < `${b[propName]}`.toLowerCase() ? 1 : `${a[propName]}`.toLowerCase() > `${b[propName]}`.toLowerCase() ? -1 : 0)
-      this.isReverseSort = !this.isReverseSort
-    }
-    else {
-      this.filteredRepositories.sort((a, b) => `${a[propName]}`.toLowerCase() > `${b[propName]}`.toLowerCase() ? 1 : `${a[propName]}`.toLowerCase() < `${b[propName]}`.toLowerCase() ? -1 : 0)
-      this.isReverseSort = !this.isReverseSort
-    }
-
+    this.sortedColumn = propName;
+    this.filteredRepositories = sortArray(this.filteredRepositories, propName, isReverse);
+    this.isReverseSort = !this.isReverseSort;
   }
 }
