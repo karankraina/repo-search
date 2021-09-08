@@ -7,7 +7,7 @@ import { GithubService } from './services/github.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  username: string = 'karankraina';
+  username: string = '';
 
   repositories: any[] = [];
 
@@ -20,7 +20,6 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.fetchRepositories()
   }
 
   handleClick() {
