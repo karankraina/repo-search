@@ -1,19 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+    --screenWidth: 100vw;
+    --screenHeight: 100vh;
+    --primaryColor: #0077B6;
+    --textLightColor: #FFF;
+    --textDarkColor: #03045E;
+    --bg-color: #CAF0F8;
+}
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: var(--screenHeight);
+    background: var(--bg-color);
+    font-family: Tahoma, sans-serif;
+}
 
 input {
     padding: 10px 5px;
     font-size: 1.5rem;
     margin: 5px;
+    color: var(--textDarkColor);
 }
 
 button {
-    background: darkblue;
-    color: #FFF;
+    background: var(--primaryColor);
+    color: var(--textLightColor);
     padding: 10px 15px;
     margin: 0 5px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 @media screen and (max-width: 786px) {

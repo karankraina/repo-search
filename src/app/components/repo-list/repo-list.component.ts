@@ -55,7 +55,7 @@ export class RepoListComponent implements OnInit, OnChanges {
 
   filterRepoName(event) {
     const filterKeyword = event.target.value;
-    this.filteredRepositories = filterArray(this.repositories, 'name', filterKeyword);
+    this.filteredRepositories = filterArray(this.repositories, ['name', 'description'], filterKeyword);
     
   }
 

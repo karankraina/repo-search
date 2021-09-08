@@ -1,7 +1,7 @@
 <div class="container">
     <section>
         <div class="filter-input">
-            <input placeholder="Filter Repo Name" type="text" (keyup)="filterRepoName($event)"
+            <input placeholder="Filter Repo Name or Description" type="text" (keyup)="filterRepoName($event)"
                 *ngIf="repositories.length">
         </div>
         <div class="content">
@@ -13,7 +13,7 @@
                     <tr *ngFor="let repo of filteredRepositories">
                         <td>{{ repo.owner }}</td>
                         <td>{{ repo.name }}</td>
-                        <td>{{ repo.description ? repo.description.length > 50 ? repo.description.substr(0, 50) + '...'
+                        <td [ngStyle]="{minWidth: '130px'}">{{ repo.description ? repo.description.length > 50 ? repo.description.substr(0, 50) + '...'
                             : repo.description : '' }}</td>
                         <td>{{ repo.stargazers_count }}</td>
                         <td>{{ repo.open_issues_count }}</td>

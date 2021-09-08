@@ -22,13 +22,20 @@ export const sortArray = (array: any[], propName: string, isRev: boolean): any[]
 /**
  * 
  * @param array Array to be filtered
- * @param propName Property to be filtered on
+ * @param propNames Properties to be filtered on
  * @param keyword Search keyword
  * @returns Filtered array
  */
-export const filterArray = (array: any[], propName: string, keyword: string): any[] => {
+export const filterArray = (array: any[], propNames: string[], keyword: string): any[] => {
     if (!keyword) return array;
     return array.filter((item: any) => {
-        return `${item[propName]}`.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
+        for (let propName of propNames) {
+            console.log({ propName });
+
+            if (`${item[propName]}`.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+                return true
+            }
+        }
+
     });
 }
