@@ -1,18 +1,19 @@
-<header>
-  <nav>
+<div class="wrapper">
+  <header>
     <h2>GitHub Repo Search</h2>
-  </nav>
 </header>
 
 <main>
-  <input type="text" placeholder="GitHub Username" [(ngModel)]="username">
-  <button (click)="handleClick()">Find Repositories</button>
-  <button (click)="handleReset()">Reset</button>
+  <nav>
+    <input type="text" placeholder="GitHub Username" [(ngModel)]="username">
+    <button (click)="handleClick()">Find Repositories</button>
+    <button (click)="handleReset()">Reset</button>
+  </nav>
 
-  <hr>
 
   <p *ngIf="errorMessage">{{errorMessage}}</p>
 
   <app-repo-list [repositories]="repositories"></app-repo-list>
 
 </main>
+</div>

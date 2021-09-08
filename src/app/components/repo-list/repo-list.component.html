@@ -1,22 +1,27 @@
-<section>
-    <h3>GitHub API Results</h3>
-    <input type="text" (keyup)="filterRepoName($event)" *ngIf="repositories.length">
-    <table *ngIf="filteredRepositories.length; else noData">
-        <thead>
-            <td *ngFor="let col of columns" (click)="sort(col.key, isReverseSort)">{{col.label}}</td>
-        </thead>
-        <tbody>
-            <tr *ngFor="let repo of filteredRepositories">
-                <td>{{repo.owner}}</td>
-                <td>{{repo.name}}</td>
-                <td>{{repo.description}}</td>
-                <td>{{repo.stargazers_count}}</td>
-                <td>{{repo.open_issues_count}}</td>
-                <td>{{repo.watchers_count}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <ng-template #noData>
-        <p><em>No data found</em></p>
-    </ng-template>
-</section>
+<div class="container">
+    <section>
+        <div class="filter-input">
+            <input placeholder="Filter Repo Name" type="text" (keyup)="filterRepoName($event)" *ngIf="repositories.length">
+        </div>
+        <div class="content">
+            <table *ngIf="filteredRepositories.length; else noData">
+                <thead>
+                    <th *ngFor="let col of columns" (click)="sort(col.key, isReverseSort)"> {{col.label}} </th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let repo of filteredRepositories">
+                        <td>{{repo.owner}}</td>
+                        <td>{{repo.name}}</td>
+                        <td>{{repo.description}}</td>
+                        <td>{{repo.stargazers_count}}</td>
+                        <td>{{repo.open_issues_count}}</td>
+                        <td>{{repo.watchers_count}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ng-template #noData>
+                <p><em>No data found</em></p>
+            </ng-template>
+        </div>
+    </section>
+</div>

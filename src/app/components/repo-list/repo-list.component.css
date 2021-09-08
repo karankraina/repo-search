@@ -1,0 +1,49 @@
+.container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.filter-input {
+    text-align: right;
+}
+
+.filter-input input {
+    font-size: 0.8rem;
+}
+
+.content {
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 5px 10px;
+}
+
+th {
+    font-size: 1.2rem;
+    background: darkblue;
+    color: #FFF;
+}
+
+@media screen and (max-width: 800px) {
+    .filter-input input {
+        font-size: 0.8rem;
+        padding: 5px 5px;
+    }
+    th {
+        font-size: 1rem;
+    }
+    td {
+        font-size: 0.8rem;
+    }
+}

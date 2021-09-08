@@ -1,3 +1,23 @@
-* {
+.wrapper {
+    max-width: 900px;
+    padding: 20px;
+    margin: auto
+}
+
+header {
     text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper {
+        padding: 10px;
+    }
 }

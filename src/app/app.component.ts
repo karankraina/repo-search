@@ -19,6 +19,10 @@ export class AppComponent {
     private githubApi: GithubService
   ) { }
 
+  ngOnInit() {
+    this.fetchRepositories()
+  }
+
   handleClick() {
     if (this.fetchingData) {
       return;
@@ -29,6 +33,8 @@ export class AppComponent {
   handleReset() {
     this.username = '';
     this.repositories = [];
+    this.fetchingData = false;
+    this.errorMessage = '';
   }
 
   fetchRepositories() {
@@ -36,8 +42,9 @@ export class AppComponent {
     this.githubApi.getRepoData(this.username).subscribe(
       (response) => {
         this.fetchingData = false;
+        this.errorMessage = '';
         this.repositories = response.map(repository => {
-          const {owner, ...rest} = repository;
+          const { owner, ...rest } = repository;
           return {
             owner: owner.login,
             ...rest

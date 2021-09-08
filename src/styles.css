@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+input {
+    padding: 10px 5px;
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+button {
+    background: darkblue;
+    color: #FFF;
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 786px) {
+    input {
+        padding: 10px 5px;
+        font-size: 1rem;
+        margin: 5px;
+    }
+}

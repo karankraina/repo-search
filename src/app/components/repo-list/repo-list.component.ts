@@ -12,7 +12,7 @@ export class RepoListComponent implements OnInit, OnChanges {
 
   isReverseSort: boolean = false;
 
-  columns: {label: string, key: string}[] = [
+  columns: { label: string, key: string }[] = [
     {
       label: 'Owner',
       key: 'owner'
@@ -63,15 +63,15 @@ export class RepoListComponent implements OnInit, OnChanges {
     });
   }
 
-  sort(propName, isReverse){
-    if (isReverse == true){
+  sort(propName, isReverse) {
+    if (isReverse == true) {
       this.filteredRepositories.sort((a, b) => `${a[propName]}`.toLowerCase() < `${b[propName]}`.toLowerCase() ? 1 : `${a[propName]}`.toLowerCase() > `${b[propName]}`.toLowerCase() ? -1 : 0)
       this.isReverseSort = !this.isReverseSort
-  }
-  else{
+    }
+    else {
       this.filteredRepositories.sort((a, b) => `${a[propName]}`.toLowerCase() > `${b[propName]}`.toLowerCase() ? 1 : `${a[propName]}`.toLowerCase() < `${b[propName]}`.toLowerCase() ? -1 : 0)
       this.isReverseSort = !this.isReverseSort
-  }
+    }
 
   }
 }
