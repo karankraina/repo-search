@@ -1,18 +1,13 @@
 <section>
     <h3>GitHub API Results</h3>
-    <input type="text" (keyup)= "filterRepoName($event)" *ngIf="repositories.length">
+    <input type="text" (keyup)="filterRepoName($event)" *ngIf="repositories.length">
     <table *ngIf="filteredRepositories.length; else noData">
         <thead>
-            <td>Owner</td>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Stars</td>
-            <td>Open Issues</td>
-            <td>Watchers</td>
+            <td *ngFor="let col of columns" (click)="sort(col.key, isReverseSort)">{{col.label}}</td>
         </thead>
         <tbody>
             <tr *ngFor="let repo of filteredRepositories">
-                <td>{{repo.owner.login}}</td>
+                <td>{{repo.owner}}</td>
                 <td>{{repo.name}}</td>
                 <td>{{repo.description}}</td>
                 <td>{{repo.stargazers_count}}</td>

@@ -36,7 +36,13 @@ export class AppComponent {
     this.githubApi.getRepoData(this.username).subscribe(
       (response) => {
         this.fetchingData = false;
-        this.repositories = response;
+        this.repositories = response.map(repository => {
+          const {owner, ...rest} = repository;
+          return {
+            owner: owner.login,
+            ...rest
+          };
+        });
       },
       (error) => {
         this.fetchingData = false;

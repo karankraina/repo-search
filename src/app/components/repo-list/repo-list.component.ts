@@ -10,6 +10,35 @@ export class RepoListComponent implements OnInit, OnChanges {
   @Input() repositories: any[] = [];
   filteredRepositories: any[];
 
+  isReverseSort: boolean = false;
+
+  columns: {label: string, key: string}[] = [
+    {
+      label: 'Owner',
+      key: 'owner'
+    },
+    {
+      label: 'Name',
+      key: 'name'
+    },
+    {
+      label: 'Description',
+      key: 'description'
+    },
+    {
+      label: 'Stars',
+      key: 'stargazers_count'
+    },
+    {
+      label: 'Open Issues',
+      key: 'open_issues_count'
+    },
+    {
+      label: 'Watchers',
+      key: 'watchers_count'
+    },
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,7 +46,7 @@ export class RepoListComponent implements OnInit, OnChanges {
     this.filteredRepositories = this.repositories;
   }
 
-  ngOnChanges(change) {
+  ngOnChanges() {
     this.filteredRepositories = this.repositories;
   }
 
@@ -34,4 +63,15 @@ export class RepoListComponent implements OnInit, OnChanges {
     });
   }
 
+  sort(propName, isReverse){
+    if (isReverse == true){
+      this.filteredRepositories.sort((a, b) => `${a[propName]}`.toLowerCase() < `${b[propName]}`.toLowerCase() ? 1 : `${a[propName]}`.toLowerCase() > `${b[propName]}`.toLowerCase() ? -1 : 0)
+      this.isReverseSort = !this.isReverseSort
+  }
+  else{
+      this.filteredRepositories.sort((a, b) => `${a[propName]}`.toLowerCase() > `${b[propName]}`.toLowerCase() ? 1 : `${a[propName]}`.toLowerCase() < `${b[propName]}`.toLowerCase() ? -1 : 0)
+      this.isReverseSort = !this.isReverseSort
+  }
+
+  }
 }
