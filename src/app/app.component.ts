@@ -26,6 +26,11 @@ export class AppComponent {
     this.fetchRepositories()
   }
 
+  handleReset() {
+    this.username = '';
+    this.repositories = [];
+  }
+
   fetchRepositories() {
     this.fetchingData = true;
     this.githubApi.getRepoData(this.username).subscribe(
